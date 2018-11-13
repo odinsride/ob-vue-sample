@@ -1,0 +1,25 @@
+@import "materialize-css/sass/components/_color-variables.scss";
+$primary-color: color("teal", "darken-2") !default;
+$secondary-color: color("teal", "lighten-2") !default;
+@import "materialize-css/sass/materialize.scss";
+
+
+.ob-text-secondary {
+    color: #4db6ac !important;
+}
+
+.ob-secondary {
+    background-color: #4db6ac !important;
+}
+
+.ob-text-primary {
+    color: #00796b !important;
+}
+
+.ob-primary {
+    background-color: #00796b !important;
+}
+
+.ob-accent {
+    background-color: #e0f2f1 !important;
+}
