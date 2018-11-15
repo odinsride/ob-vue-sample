@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
+      <div v-if="alert.message" :class="`alert ${alert.type}`">{{alert.message}}</div>
       <router-view/>
     </div>
   </div>
@@ -8,7 +9,18 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  computed: {
+    alert () {
+      return this.$store.state.alert
+    }
+  },
+  watch: {
+    $route (to, from) {
+      // clear alert on location change
+      this.$store.dispatch('alert/clear')
+    }
+  }
 }
 </script>
 

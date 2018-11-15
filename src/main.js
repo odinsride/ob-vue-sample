@@ -2,8 +2,9 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
-import axios from './backend/vue-axios'
+import { router } from './_helpers'
+// import axios from './backend/vue-axios'
+import { store } from './_store'
 import 'materialize-css'
 
 Vue.config.productionTip = false
@@ -12,7 +13,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  axios,
+  store,
   components: { App },
   template: '<App/>'
 })

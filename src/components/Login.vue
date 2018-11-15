@@ -4,7 +4,7 @@
       <h5 class="ob-text-primary"><strong>Login</strong></h5>
     </div>
 
-    <form class="col s12" @submit.prevent="login">
+    <form class="col s12" @submit.prevent="handleSubmit">
       <div class="row">
         <div class="input-field col l4 s12">
           <i class="material-icons prefix ob-text-primary">email</i>
@@ -42,27 +42,26 @@ export default {
     return {
       email: '',
       password: '',
-      error: false
+      submitted: false
     }
   },
+  computed: {
+    loggingIn () {
+      return this.$store.state.authentication.status.loggingIn
+    }
+  },
+  created () {
+    // reset login status
+    this.$store.dispatch('authentication/logout')
+  },
   methods: {
-    login () {
-      this.$http.post('/login', { email: this.email, password: this.password })
-        .then(request => this.loginSuccessful(request))
-        .catch(() => this.loginFailed())
-    },
-    loginSuccessful (req) {
-      if (!req.data.jwt) {
-        this.loginFailed()
-        return
+    handleSubmit (e) {
+      this.submitted = true
+      const { email, password } = this
+      const { dispatch } = this.$store
+      if (email && password) {
+        dispatch('authentication/login', { email, password })
       }
-      this.error = false
-      localStorage.token = req.data.jwt
-      this.$router.replace('/accounts')
-    },
-    loginFailed () {
-      this.error = 'Login failed!'
-      delete localStorage.token
     }
   }
 }
