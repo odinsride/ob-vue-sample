@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Nav></Nav>
     <div class="container">
       <div v-if="alert.message" :class="`alert ${alert.type}`">{{alert.message}}</div>
       <router-view/>
@@ -8,6 +9,8 @@
 </template>
 
 <script>
+import Nav from '@/components/layout/Nav'
+
 export default {
   name: 'App',
   computed: {
@@ -20,6 +23,12 @@ export default {
       // clear alert on location change
       this.$store.dispatch('alert/clear')
     }
+  },
+  components: {
+    Nav
+  },
+  mounted: function () {
+    $(".dropdown-trigger").dropdown();
   }
 }
 </script>

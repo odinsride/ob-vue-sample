@@ -1,3 +1,5 @@
+import { apiUrl } from '@/config'
+
 export const userService = {
   login,
   logout
@@ -10,7 +12,7 @@ function login (email, password) {
     body: JSON.stringify({ email, password })
   }
 
-  return fetch(`http://localhost:3000/api/v1/login`, requestOptions)
+  return fetch(`${apiUrl}/login`, requestOptions)
     .then(handleResponse)
     .then(user => {
       // login successful if there's a jwt token in the response

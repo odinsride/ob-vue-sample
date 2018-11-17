@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ user }}</h1>
+    <h1>{{ user.email }}</h1>
     <h2>Essential Links</h2>
     <ul>
       <li>
