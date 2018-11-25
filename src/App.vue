@@ -34,8 +34,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/stylesheets/App.scss';
-
 html {
     font-family: Ubuntu, Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen-Sans, Cantarell, "Helvetica Neue", sans-serif;
 }
